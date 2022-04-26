@@ -76,7 +76,7 @@ public class Persona implements Comparable<Persona>{
     //Método compareTo.
     @Override
     public int compareTo(Persona t) {
-        return this.compareTo(t);
+        return this.getApellidos().compareTo(t.getApellidos());
     }
     
 
