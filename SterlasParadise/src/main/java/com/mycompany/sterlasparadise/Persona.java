@@ -6,20 +6,24 @@ import java.util.Objects;
  *
  * @author acutuc
  */
-//Definición de la clase.
+//Definición de la clase. Implementa la interfaz Comparable.
 public class Persona implements Comparable<Persona>{
     //Atributos
     private String nombre;
     private String apellidos;
+    private String telefono;
+    private String correo;
     
     //Constructor con sus atributos por defecto.
     public Persona() {
     }
     
     //Constructor parametrizado.
-    public Persona(String nombre, String apellidos) {
+    public Persona(String nombre, String apellidos, String telefono, String correo) {
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.correo = correo;
     }
     
     //Getters y setters.
@@ -39,16 +43,38 @@ public class Persona implements Comparable<Persona>{
         this.apellidos = apellidos;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
     //hashCode()
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.nombre);
-        hash = 59 * hash + Objects.hashCode(this.apellidos);
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.nombre);
+        hash = 17 * hash + Objects.hashCode(this.apellidos);
+        hash = 17 * hash + Objects.hashCode(this.telefono);
+        hash = 17 * hash + Objects.hashCode(this.correo);
         return hash;
     }
 
     //equals()
+    /*Una persona será igual a otra si coinciden en el correo electrónico.
+    (Entendemos que para el ejercicio no habrán personas con el mismo nombre y apellidos,
+    registradas con correos diferentes).*/
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -64,19 +90,27 @@ public class Persona implements Comparable<Persona>{
         if (!Objects.equals(this.nombre, other.nombre)) {
             return false;
         }
-        return Objects.equals(this.apellidos, other.apellidos);
+        if (!Objects.equals(this.apellidos, other.apellidos)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefono, other.telefono)) {
+            return false;
+        }
+        return Objects.equals(this.correo, other.correo); //ATENCIÓN AQUÍ
     }
     
     //toString()
     @Override
     public String toString() {
-        return "Persona{" + "Nombre: " + nombre + "\tApellidos: " + apellidos + '}';
+        return "Persona{" + "Nombre: " + nombre + "\tApellidos: " + apellidos + "\tTeléfono: " + telefono +
+                "\tCorreo: " + correo + '}';
     }
 
     //Método compareTo.
+    //Compara el correo de una persona con otra.
     @Override
     public int compareTo(Persona t) {
-        return this.getApellidos().compareTo(t.getApellidos());
+        return this.getCorreo().compareTo(t.getCorreo());
     }
     
 
