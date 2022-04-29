@@ -52,7 +52,7 @@ public class GeneradorPersonas {
     
     //Método que genera emails con los nombres y apellidos de cada persona
     public String generarEmail(String nombre, String apellido1, String apellido2){
-        String email = (nombre + apellido1 + apellido2 + EXTENSIONES[random.nextInt(EXTENSIONES.length)]);
+        String email = (nombre.substring(0, 3).toLowerCase()) + (apellido1.substring(0, 3).toLowerCase()) + (apellido2.substring(0, 3).toLowerCase()) + EXTENSIONES[random.nextInt(EXTENSIONES.length)];
         return email;
     }
     
