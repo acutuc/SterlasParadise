@@ -8,6 +8,7 @@ package com.mycompany.sterlasparadise;
  *
  * @author fcoj
  */
+import java.time.*;
 import java.util.*;
 
 public class PruebaRestaurante {
@@ -27,14 +28,15 @@ public class PruebaRestaurante {
         london.setNombre("London");
         london.setZonas(new ArrayList<>());
         
-        london.getZonas().add(new Zona(1, false));
-        hawaii.getZonas().add(new Zona(0, 10, true));
-        hawaii.getZonas().add(new Zona(1, 10, false));
-        cerdena.getZonas().add(new Zona(0, 5, true));
-        cerdena.getZonas().add(new Zona(1, 10, false));
-        marbella.getZonas().add(new Zona(1, 10, false));
-        marbella.getZonas().add(new Zona(2, 5, false));
-        london.getZonas().add(new Zona());
+        london.getZonas().add(new Zona(1, 20, false, new TreeMap<>()));
+        hawaii.getZonas().add(new Zona(0, 10, true, new TreeMap<>()));
+        hawaii.getZonas().add(new Zona(1, 10, false, new TreeMap<>()));
+        cerdena.getZonas().add(new Zona(0, 5, true, new TreeMap<>()));
+        cerdena.getZonas().add(new Zona(1, 10, false, new TreeMap<>()));
+        marbella.getZonas().add(new Zona(1, 10, false, new TreeMap<>()));
+        marbella.getZonas().add(new Zona(2, 5, false, new TreeMap<>()));
+        
+        london.getZonas().get(0).anyadirReserva(LocalDateTime.of(2022, 5, 3, 16, 0), 4);
         
         System.out.println("Restaurante 1 : " + hawaii);
         System.out.println("Restaurante 2 : " + cerdena);
