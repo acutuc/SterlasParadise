@@ -1,7 +1,6 @@
 
 package com.mycompany.sterlasparadise;
 
-import java.time.LocalDate;
 import java.util.Random;
 
 /*
@@ -37,38 +36,38 @@ public class GeneradorPersonas {
                                                  "@outlook.es", "@msn.com"};
     
     //Método que genera un nombre aleatorio
-    public String generarNombre(){
+    public static String generarNombre(){
         return NOMBRES[random.nextInt(NOMBRES.length)];
     }
     
     //Método que genera un apellido aleatorio
-    public String generarApellido(){
+    public static String generarApellido(){
         return APELLIDOS[random.nextInt(APELLIDOS.length)];
     }
     
     //Método que genera los apellidos aleatoriamente
-    public String generarApellidos(String apellido1, String apellido2){
+    public static String generarApellidos(String apellido1, String apellido2){
         return apellido1 + apellido2;
     }
     
     //Método que genera un nombre completo
-    public String generarNombreCompleto(){
+    public static String generarNombreCompleto(){
         return generarNombre() + " " + generarApellido() + " " + generarApellido();
     }
     
     //Método que genera emails con los nombres y apellidos de cada persona
-    public String generarEmail(String nombre, String apellido1, String apellido2){
+    public static String generarEmail(String nombre, String apellido1, String apellido2){
         String email = (nombre.substring(0, 3).toLowerCase()) + (apellido1.substring(0, 3).toLowerCase()) + (apellido2.substring(0, 3).toLowerCase()) + EXTENSIONES[random.nextInt(EXTENSIONES.length)];
         return email;
     }
     
     //Método que genera una edad aleatoria
-    public int generarEdad(){
+    public static int generarEdad(){
         return random.nextInt(80-18+1)+18;
     }
     
     //Método que genera un número de teléfono aleatorio
-    public String generarTelefono(){
+    public static String generarTelefono(){
         String tlf = "";
         //Número aleatorio entre 0 y 9
         int aleatorio = random.nextInt(10);
@@ -81,7 +80,7 @@ public class GeneradorPersonas {
     }
     
     //Método para generar una persona con datos aleatorios
-    public Persona generarPersona(){
+    public static Persona generarPersona(){
         String nombre = generarNombre();
         String apellido1 = generarApellido();
         String apellido2 = generarApellido();
