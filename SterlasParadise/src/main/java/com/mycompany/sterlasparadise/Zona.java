@@ -92,6 +92,11 @@ public class Zona {
         
     }
 
+    @Override
+    public String toString() {
+        return "Zona{" + "numZona=" + numZona + ", numMesasMax=" + numMesasMax + ", exterior=" + exterior + ", reservas=" + reservas + '}';
+    }
+
     
             
 }
