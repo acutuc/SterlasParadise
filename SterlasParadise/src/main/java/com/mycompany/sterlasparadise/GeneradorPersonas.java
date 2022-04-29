@@ -56,7 +56,10 @@ public class GeneradorPersonas {
         return email;
     }
     
-    
+    //Método que genera una edad aleatoria
+    public int generarEdad(){
+        return random.nextInt(80-18+1)+18;
+    }
     
     
 }
