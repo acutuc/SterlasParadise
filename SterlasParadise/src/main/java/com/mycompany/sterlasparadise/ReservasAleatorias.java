@@ -19,13 +19,19 @@ public class ReservasAleatorias {
     private final int anyo = 2022;
     private int mes = rd.nextInt(12)+1;
     private int dia = rd.nextInt(30) + 1;
-    private int horas = rd.nextInt(20 - 9) + 9 + 1;
+    private int[] horas = {13,14,15,20,21,22};
     private int minutos = rd.nextInt(60);
 
     //Constructor por defecto que da fecha, hora y número de mesas de manera aleatoria.
     public ReservasAleatorias() {
+        if (minutos >= 0 && minutos<30){
+            this.minutos = 0;
+        }else{
+            this.minutos = 30;
+        }
+        int i = rd.nextInt(6);
         this.fecha = LocalDate.of(anyo, mes, dia);
-        this.hora = LocalTime.of(horas, minutos);
+        this.hora = LocalTime.of(horas[i], minutos);
         this.numMesas = rd.nextInt(10) + 1;
     }
 
