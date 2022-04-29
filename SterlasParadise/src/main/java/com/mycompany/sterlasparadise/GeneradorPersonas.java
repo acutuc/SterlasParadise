@@ -35,8 +35,13 @@ public class GeneradorPersonas {
     private static final String[] EXTENSIONES = {"@yahoo.es", "@hotmail.com", "@gmail.com",
                                                  "@outlook.es", "@msn.com"};
     
-    //Clase que genera emails con los nombres y apellidos de cada persona
-    public String GenerarEmail(String nombre, String apellido1, String apellido2){
+    //Método que genera un nombre aleatorio
+    public String generarNombre(){
+        return NOMBRES[random.nextInt(NOMBRES.length)];
+    }
+    
+    //Método que genera emails con los nombres y apellidos de cada persona
+    public String generarEmail(String nombre, String apellido1, String apellido2){
         String email = (nombre + apellido1 + apellido2 + EXTENSIONES[random.nextInt(EXTENSIONES.length)]);
         return email;
     }
