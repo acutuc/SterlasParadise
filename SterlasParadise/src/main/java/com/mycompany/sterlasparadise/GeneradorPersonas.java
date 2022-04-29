@@ -61,5 +61,17 @@ public class GeneradorPersonas {
         return random.nextInt(80-18+1)+18;
     }
     
+    //Método que genera un número de teléfono aleatorio
+    public String generarTelefonos(){
+        String tlf = "";
+        //Número aleatorio entre 0 y 9
+        int aleatorio = random.nextInt(10);
+        
+        for (int i = 0; i < 9; i++) {
+            tlf += aleatorio;
+        }
+        
+        return tlf;
+    }
     
 }
