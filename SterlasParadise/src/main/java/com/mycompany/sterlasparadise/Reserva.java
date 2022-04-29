@@ -10,6 +10,8 @@ import java.time.LocalTime;
 /**
  *
  * @author miguel
+ * 
+ * PRUEBA CAMBIOS
  */
 public class Reserva {
     int restaurante;
