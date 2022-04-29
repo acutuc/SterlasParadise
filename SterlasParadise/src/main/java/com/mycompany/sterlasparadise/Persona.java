@@ -1,5 +1,6 @@
 package com.mycompany.sterlasparadise;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -13,17 +14,19 @@ public class Persona implements Comparable<Persona>{
     private String apellidos;
     private String telefono;
     private String correo;
+    private LocalDate fecNacim;
     
     //Constructor con sus atributos por defecto.
     public Persona() {
     }
     
     //Constructor parametrizado.
-    public Persona(String nombre, String apellidos, String telefono, String correo) {
+    public Persona(String nombre, String apellidos, String telefono, String correo, LocalDate fecNacim) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
         this.correo = correo;
+        this.fecNacim = fecNacim;
     }
     
     //Getters y setters.
@@ -59,16 +62,25 @@ public class Persona implements Comparable<Persona>{
         this.correo = correo;
     }
 
-    //hashCode()
+    public LocalDate getFecNacim() {
+        return fecNacim;
+    }
 
+    public void setFecNacim(LocalDate fecNacim) {
+        this.fecNacim = fecNacim;
+    }
+    
+
+    //hashCode()
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.nombre);
-        hash = 17 * hash + Objects.hashCode(this.apellidos);
-        hash = 17 * hash + Objects.hashCode(this.telefono);
-        hash = 17 * hash + Objects.hashCode(this.correo);
-        return hash;
+        hash = 79 * hash + Objects.hashCode(this.nombre);
+        hash = 79 * hash + Objects.hashCode(this.apellidos);
+        hash = 79 * hash + Objects.hashCode(this.telefono);
+        hash = 79 * hash + Objects.hashCode(this.correo);
+        hash = 79 * hash + Objects.hashCode(this.fecNacim);
+        return hash; 
     }
 
     //equals()
@@ -96,14 +108,18 @@ public class Persona implements Comparable<Persona>{
         if (!Objects.equals(this.telefono, other.telefono)) {
             return false;
         }
-        return Objects.equals(this.correo, other.correo); //ATENCIÓN AQUÍ
+        if (!Objects.equals(this.correo, other.correo)) {
+            return false;
+        }
+        return Objects.equals(this.fecNacim, other.fecNacim);
     }
+    
     
     //toString()
     @Override
     public String toString() {
         return "Persona{" + "Nombre: " + nombre + "\tApellidos: " + apellidos + "\tTeléfono: " + telefono +
-                "\tCorreo: " + correo + '}';
+                "\tCorreo: " + correo + "\tFecha de nacimiento: " + fecNacim + '}';
     }
 
     //Método compareTo.
