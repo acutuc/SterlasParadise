@@ -9,31 +9,48 @@ import java.util.Random;
  * @author samjimmaz
  */
 public class ReservasAleatorias {
-    
-    
+
     //Atributos necesarios para la generación de las reservas de manera aleatoria
     private LocalDate fecha;
     private LocalTime hora;
-    private int numMesas;
     private Random rd = new Random();
-    private final int anyo = 2022;
-    private int mes = rd.nextInt(12)+1;
-    private int dia = rd.nextInt(30) + 1;
-    private int[] horas = {13,14,15,20,21,22};
-    private int minutos = rd.nextInt(60);
+    private int numMesas;
+
+
+    public int generarMesas() {
+        int mesas = rd.nextInt(10)+1;
+        return mesas;
+    }
+
+    public LocalDate generarFecha() {
+        int anyo = 2022;
+        int mes = rd.nextInt(12) + 1;
+        int dia = rd.nextInt(30) + 1;
+
+        LocalDate fech = LocalDate.of(anyo, mes, dia);
+        return fech;
+    }
+    
+    public LocalTime generarHora(){
+            int i = rd.nextInt(6);
+            int j = rd.nextInt(2);
+            int[] horas = {13, 14, 15, 20, 21, 22};
+            int minutos[] = {0,30};
+            
+            LocalTime hora = LocalTime.of(horas[i], minutos[j]);
+            
+            return hora;
+        
+    }
 
     //Constructor por defecto que da fecha, hora y número de mesas de manera aleatoria.
+
     public ReservasAleatorias() {
-        if (minutos >= 0 && minutos<30){
-            this.minutos = 0;
-        }else{
-            this.minutos = 30;
-        }
-        int i = rd.nextInt(6);
-        this.fecha = LocalDate.of(anyo, mes, dia);
-        this.hora = LocalTime.of(horas[i], minutos);
-        this.numMesas = rd.nextInt(10) + 1;
+        this.fecha = generarFecha();
+        this.hora = generarHora();
+        this.numMesas = generarMesas();
     }
+    
 
     //Constructor parametrizado en el que introducimos nosotros fecha, hora y número de mesas.
     public ReservasAleatorias(LocalDate fecha, LocalTime hora, int numMesas) {
