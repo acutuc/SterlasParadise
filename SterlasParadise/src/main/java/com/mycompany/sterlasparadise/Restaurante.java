@@ -2,6 +2,10 @@ package com.mycompany.sterlasparadise;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author maxi
+ */
 public class Restaurante {
     
     //Atributos de la clase:
