@@ -78,6 +78,6 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return  restaurante + ";" + zona + ";" + nombreCliente + ";" + diaReserva + ";" + horaReserva + ";" + numPersonas ;
+        return  restaurante + ";" + zona + ";" + diaReserva + ";" + horaReserva + ";" + numPersonas + ";" + nombreCliente ;
     }
 }
