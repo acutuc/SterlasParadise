@@ -32,8 +32,9 @@ public class ProgramaPrincipal {
                 new ArrayList<>(Arrays.asList(londonInterior)));
         
         //CLIENTES DE PRUEBA
-        
-        //Falta la lectura del csv y la implementacion del las reservas
+        Persona c1 = GeneradorPersonas.generarPersona();
+        Persona c2 = GeneradorPersonas.generarPersona();
+        Persona c3 = GeneradorPersonas.generarPersona();
         
     }
     
