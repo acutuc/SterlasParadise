@@ -89,7 +89,7 @@ public class CSV {
             }
 
         } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());;
+            System.out.println(ex.getMessage());
         }
 
         return lista;
@@ -98,7 +98,7 @@ public class CSV {
     //Parsea fecha String en LocalDate con formato 
     public static LocalDate stringFecha(String fecha) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         if (fecha.isEmpty()) {
             return null;
@@ -110,7 +110,7 @@ public class CSV {
     //Parsea fecha String en LocalDate con formato hh/mm/ss
     public static LocalTime stringHora(String hora) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_TIME;
 
         if (hora.isEmpty()) {
             return null;
