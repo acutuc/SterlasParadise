@@ -41,8 +41,13 @@ public class GeneradorPersonas {
     }
     
     //Método que genera un apellido aleatorio
-    public String generarApellidos(){
+    public String generarApellido(){
         return APELLIDOS[random.nextInt(APELLIDOS.length)];
+    }
+    
+    //Método que genera un nombre completo
+    public String generarNombreCompleto(){
+        return generarNombre() + " " + generarApellido() + " " + generarApellido();
     }
     
     //Método que genera emails con los nombres y apellidos de cada persona
