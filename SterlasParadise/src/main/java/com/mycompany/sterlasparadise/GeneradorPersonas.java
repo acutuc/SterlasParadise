@@ -1,6 +1,7 @@
 
 package com.mycompany.sterlasparadise;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 /*
@@ -45,6 +46,11 @@ public class GeneradorPersonas {
         return APELLIDOS[random.nextInt(APELLIDOS.length)];
     }
     
+    //Método que genera los apellidos aleatoriamente
+    public String generarApellidos(String apellido1, String apellido2){
+        return apellido1 + apellido2;
+    }
+    
     //Método que genera un nombre completo
     public String generarNombreCompleto(){
         return generarNombre() + " " + generarApellido() + " " + generarApellido();
@@ -62,7 +68,7 @@ public class GeneradorPersonas {
     }
     
     //Método que genera un número de teléfono aleatorio
-    public String generarTelefonos(){
+    public String generarTelefono(){
         String tlf = "";
         //Número aleatorio entre 0 y 9
         int aleatorio = random.nextInt(10);
@@ -72,6 +78,21 @@ public class GeneradorPersonas {
         }
         
         return tlf;
+    }
+    
+    //Método para generar una persona con datos aleatorios
+    public Persona generarPersona(){
+        String nombre = generarNombre();
+        String apellido1 = generarApellido();
+        String apellido2 = generarApellido();
+        String apellidos = generarApellidos(apellido1, apellido2);
+        String correo = generarEmail(nombre, apellido1, apellido2);
+        String telefono = generarTelefono();
+        int edad = generarEdad();
+        
+        Persona p = new Persona(nombre, apellidos, telefono, correo, edad);
+        
+        return p;
     }
     
 }
