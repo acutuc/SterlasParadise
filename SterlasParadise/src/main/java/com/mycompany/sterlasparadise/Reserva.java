@@ -67,7 +67,7 @@ public class Reserva {
         this.numPersonas = numPersonas;
     }
 
-    public Reserva(int restaurante, int zona, String nombreCliente, LocalDate diaReserva, LocalTime horaReserva, int numPersonas) {
+    public Reserva(int restaurante, int zona, LocalDate diaReserva, LocalTime horaReserva, int numPersonas, String nombreCliente) {
         this.restaurante = restaurante;
         this.zona = zona;
         this.nombreCliente = nombreCliente;
@@ -78,6 +78,6 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "Reserva{" + "restaurante=" + restaurante + ", zona=" + zona + ", nombreCliente=" + nombreCliente + ", diaReserva=" + diaReserva + ", horaReserva=" + horaReserva + ", numPersonas=" + numPersonas + '}';
+        return  restaurante + ";" + zona + ";" + nombreCliente + ";" + diaReserva + ";" + horaReserva + ";" + numPersonas ;
     }
 }
