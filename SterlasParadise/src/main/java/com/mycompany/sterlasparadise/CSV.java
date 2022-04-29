@@ -25,7 +25,7 @@ public class CSV {
         String idFichero = "reservas.csv";
 
         //Se crea el fichero con la cabecera
-        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
 
             flujo.write("RESTAURANTE;ZONA;FECHA;HORA;NºPERSONAS;CLIENTE"); //Cabecera
 
@@ -44,7 +44,7 @@ public class CSV {
         //Ruta relativa al archivo ya creado
         String idFichero = "reservas.csv";
 
-        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero, true))) {
+        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero, true))) {
 
             flujo.write(reserva.toString()); //Se escribe la nueva reserva
 
@@ -67,10 +67,7 @@ public class CSV {
         String[] tokens;
         String linea;
 
-        // Inicialización del flujo "datosFichero" en función del archivo llamado "idFichero"
-        // Estructura try-with-resources. Permite cerrar los recursos una vez finalizadas
-        // las operaciones con el archivo
-        try ( Scanner datosFichero = new Scanner(new FileReader(idFichero))) {
+        try (Scanner datosFichero = new Scanner(new FileReader(idFichero))) {
 
             //Salta la primera línea (cabecera)
             datosFichero.nextLine();
@@ -81,11 +78,81 @@ public class CSV {
 
                 tokens = linea.split(";"); //Teniendo en cuenta el separador 
 
-                lista.add(new Reserva(Integer.valueOf(tokens[0]),Integer.valueOf(tokens[1]),
-                        stringFecha(tokens[2]),stringHora(tokens[3]),Integer.valueOf(tokens[4]),
+                lista.add(new Reserva(Integer.valueOf(tokens[0]), Integer.valueOf(tokens[1]),
+                        stringFecha(tokens[2]), stringHora(tokens[3]), Integer.valueOf(tokens[4]),
                         tokens[5]));
-                
-                
+
+            }
+
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return lista;
+    }
+
+    public static ArrayList<Reserva> listaReservasPorRestaurante(int numeroRestaurante) {
+
+        ArrayList<Reserva> lista = new ArrayList<>();
+        String idFichero = "reservas.csv";
+
+        // Variables para guardar los datos que se van leyendo
+        String[] tokens;
+        String linea;
+
+        try (Scanner datosFichero = new Scanner(new FileReader(idFichero))) {
+
+            //Salta la primera línea (cabecera)
+            datosFichero.nextLine();
+            // Mientras haya líneas por leer
+            while (datosFichero.hasNextLine()) {
+
+                linea = datosFichero.nextLine(); //Se lee la línea
+
+                tokens = linea.split(";"); //Teniendo en cuenta el separador 
+                //Si es del restaurante indicado, se añade a la lista
+                if (Integer.valueOf(tokens[0]) == numeroRestaurante) {
+
+                    lista.add(new Reserva(Integer.valueOf(tokens[0]), Integer.valueOf(tokens[1]),
+                            stringFecha(tokens[2]), stringHora(tokens[3]), Integer.valueOf(tokens[4]),
+                            tokens[5]));
+                }
+            }
+
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return lista;
+    }
+
+    public static ArrayList<Reserva> listaReservasPorZona(int numeroRestaurante, int numeroZona) {
+
+        ArrayList<Reserva> lista = new ArrayList<>();
+        String idFichero = "reservas.csv";
+
+        // Variables para guardar los datos que se van leyendo
+        String[] tokens;
+        String linea;
+
+        try (Scanner datosFichero = new Scanner(new FileReader(idFichero))) {
+
+            //Salta la primera línea (cabecera)
+            datosFichero.nextLine();
+            // Mientras haya líneas por leer
+            while (datosFichero.hasNextLine()) {
+
+                linea = datosFichero.nextLine(); //Se lee la línea
+
+                tokens = linea.split(";"); //Teniendo en cuenta el separador 
+                //Si es del restaurante y zona indicados, se añade a la lista
+                if (Integer.valueOf(tokens[0]) == numeroRestaurante
+                        && Integer.valueOf(tokens[1]) == numeroZona) {
+
+                    lista.add(new Reserva(Integer.valueOf(tokens[0]), Integer.valueOf(tokens[1]),
+                            stringFecha(tokens[2]), stringHora(tokens[3]), Integer.valueOf(tokens[4]),
+                            tokens[5]));
+                }
             }
 
         } catch (FileNotFoundException ex) {
@@ -106,7 +173,7 @@ public class CSV {
 
         return LocalDate.parse(fecha, formatter);
     }
-    
+
     //Parsea fecha String en LocalDate con formato hh/mm/ss
     public static LocalTime stringHora(String hora) {
 
@@ -118,6 +185,5 @@ public class CSV {
 
         return LocalTime.parse(hora, formatter);
     }
-    
-    
+
 }
