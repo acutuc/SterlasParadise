@@ -5,7 +5,7 @@ drop table if exists `reservas`;
 
 create table `reservas` (
 
-`codres` int NOT NULL,
+`codreserva` int NOT NULL,
 `fecres` date,
 `horares` time,
 `numper` tinyint (2),
@@ -14,15 +14,15 @@ create table `reservas` (
 `tlfcli` int(8),
 `emailcli` varchar(12),
 `codzona` int,
-`codres` int,
+`codrest` int,
 
-constraint `pk_reservas` primary key (`codres`),
+constraint `pk_reservas` primary key (`codreserva`),
 
 constraint `fk_zonas_reservas` foreign key (`codzona`)
         references `zonas` (`codzona`) 
         on update cascade,
         
-constraint `fk_restaurantes_reservas` foreign key (`codres`)
-        references `restaurantes` (`codzona`) 
+constraint `fk_restaurantes_reservas` foreign key (`codrest`)
+        references `restaurantes` (`codrest`) 
         on update cascade
         );
