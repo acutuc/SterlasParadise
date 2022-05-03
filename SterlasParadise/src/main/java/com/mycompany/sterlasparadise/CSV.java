@@ -19,6 +19,7 @@ import java.util.logging.Logger;
  */
 public class CSV {
 
+    //Crea el archivo CSV de las reservas sin datos (sólo cabecera)
     public static void generarCSVReservas() {
 
         //Se crea el fichero en la raíz del proyecto
@@ -39,6 +40,7 @@ public class CSV {
 
     }
 
+    //Añade una reserva al CSV
     public static void aniadirReservas(Reserva reserva) {
 
         //Ruta relativa al archivo ya creado
@@ -58,6 +60,7 @@ public class CSV {
 
     }
 
+    //Devuelve la lista de Reservas desde el archivo CSV
     public static ArrayList<Reserva> listaReservas() {
 
         ArrayList<Reserva> lista = new ArrayList<>();
@@ -91,6 +94,7 @@ public class CSV {
         return lista;
     }
 
+    //Devuelve una lista de Reservas dado un restaurante
     public static ArrayList<Reserva> listaReservasPorRestaurante(int numeroRestaurante) {
 
         ArrayList<Reserva> lista = new ArrayList<>();
@@ -126,6 +130,7 @@ public class CSV {
         return lista;
     }
 
+    //Devuelve una lista de Reservas dada una zona de un restaurante
     public static ArrayList<Reserva> listaReservasPorZona(int numeroRestaurante, int numeroZona) {
 
         ArrayList<Reserva> lista = new ArrayList<>();
