@@ -21,7 +21,12 @@ create table if not exists restaurantes
     constraint pk_restaurantes primary key (codrest)
 );
 
-
+create table if not exists zonas(codzona int,codrest int,
+ mesas int, interior boolean, planta tinyint,
+ constraint pk_zonas primary key (codzona, codrest),
+ constraint fk_zonas_restaurantes foreign key (codrest)
+ references restaurantes (codrest) on delete no action on update cascade);
+ 
 
 -- A partir de aqui ni caso
 /*
