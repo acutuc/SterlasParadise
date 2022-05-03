@@ -21,7 +21,14 @@ create table if not exists centros
     
     constraint pk_centros primary key (numcentro)
 );
+create table if not exists zonas(codzona int,codrest int,
+ mesas int, interior boolean, planta tinyint,
+ constraint pk_zonas primary key (codzona, codrest),
+ constraint fk_zonas_restaurantes foreign key (codrest)
+ references restaurantes (codrest) on delete no action on update cascade);
+ 
 
+/*
 create table if not exists departamentos
 (
 	numcentro int not null,
@@ -93,7 +100,7 @@ create table if not exists dirigir
     departamento), da de alta los registros correspondientes a 
     los centros de trabajo, departamentos y los primeros 10 
     empleados que aparecen en el documento anexo.*/
- 
+ /*
  insert into centros
 	(numcentro, nomcentro, direccion)
  values
@@ -116,4 +123,4 @@ insert into empleados
     (numempleado, numcentro, numdepto, extelefon, fecnacim, fecingreo,
     salario, comision, numhijos, nomemp, ap1emp, ap2emp)
 values
-	()
+	()*/
