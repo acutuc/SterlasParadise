@@ -7,9 +7,6 @@ zonas(+[codrest*,codzona], interior, planta, mesas)
 resrevas(+codreserva, [codrest, codzona]*, fecha, hora, numper, nomcli, apecli, telefono, email)
 */
 
-
-
-
 create database if not exists bdsterlasparadise;
 use bdsterlasparadise;
 
@@ -26,33 +23,7 @@ create table if not exists zonas(codrest int,codzona int,
  constraint pk_zonas primary key (codzona, codrest),
  constraint fk_zonas_restaurantes foreign key (codrest)
  references restaurantes (codrest) on delete no action on update cascade);
- 
- drop table if exists 'reservas';
 
-create table 'reservas' (
-
-`codres` int NOT NULL,
-`fecres` date,
-`horares` time,
-`numper` tinyint (2),
-`nomcli` varchar (30),
-`apecli` varchar (30),
-`tlfcli` int(8),
-`emailcli` varchar(12),
-`codzona` int,
-`codrest` int,
-
-constraint `pk_reservas` primary key (`codres`),
-
-constraint `fk_zonas_reservas` foreign key (`codzona`)
-        references `zonas` (`codzona`) 
-        on update cascade,
-        
-constraint `fk_restaurantes_reservas` foreign key (`codrest`)
-        references `restaurantes` (`codzona`) 
-        on update cascade
-        );
- 
 
 -- A partir de aqui ni caso
 /*
