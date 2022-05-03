@@ -8,26 +8,22 @@ resrevas(+codreserva, [codrest, codzona]*, fecha, hora, numper, nomcli, apecli, 
 */
 
 
--- A partir de aqui ni caso
+
 
 create database if not exists bdsterlasparadise;
 use bdsterlasparadise;
 
-create table if not exists centros
+create table if not exists restaurantes
 (
-	numcentro int not null,
-    nomcentro varchar(40),
-    direccion varchar(100),
+	codrest int not null,
+    nomrest varchar(50),
     
-    constraint pk_centros primary key (numcentro)
+    constraint pk_restaurantes primary key (codrest)
 );
-create table if not exists zonas(codzona int,codrest int,
- mesas int, interior boolean, planta tinyint,
- constraint pk_zonas primary key (codzona, codrest),
- constraint fk_zonas_restaurantes foreign key (codrest)
- references restaurantes (codrest) on delete no action on update cascade);
- 
 
+
+
+-- A partir de aqui ni caso
 /*
 create table if not exists departamentos
 (
