@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package com.mycompany.sterlasparadise;
 
 import java.time.LocalDate;
@@ -21,6 +17,8 @@ public class PruebasGenerales {
         Persona p1 = new Persona();
         
         System.out.println(p1);
+        
+        System.out.println(GeneradorPersonas.generarPersona());
     }
     
 }

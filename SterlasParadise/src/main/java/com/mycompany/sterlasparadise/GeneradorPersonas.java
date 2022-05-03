@@ -19,14 +19,14 @@ public class GeneradorPersonas {
                                              "Marcos", "Alex", "David", "Diego",
                                              "Manuel", "Noa", "Carla", "Daniela",
                                              "Leo", "Sofia", "Hugo", "Andreu", "Mireya",
-                                             "Isidoro", "Pedro", "Pablo", "María", "Nerea", 
-                                             "Javier", "Lucía", "Carlos", "Luna"};
+                                             "Isidoro", "Pedro", "Pablo", "Maria", "Nerea", 
+                                             "Javier", "Lucia", "Carlos", "Luna"};
     
     //Array de strings con los apellidos
-    private static final String[] APELLIDOS = {"Muñoz", "Moreno", "Díaz", "Ruíz",
-                                               "Hernandez", "Martín", "Gómez", "García",
-                                               "Rodríguez", "González", "Fernández","López",
-                                               "Martínez", "Sánchez", "Pérez", "Torres", "Ramos",
+    private static final String[] APELLIDOS = {"Muñoz", "Moreno", "Diaz", "Ruiz",
+                                               "Hernandez", "Martin", "Gomez", "Garcia",
+                                               "Rodriguez", "Gonzalez", "Fernandez","Lopez",
+                                               "Martinez", "Sanchez", "Perez", "Torres", "Ramos",
                                                "Gil", "Serrano", "Molina", "Blanco", "Castro",
                                                "Rubio", "Medina", "Castillo", "Santos", "Cruz",
                                                "Prieto", "Gallego", "Vega"};
