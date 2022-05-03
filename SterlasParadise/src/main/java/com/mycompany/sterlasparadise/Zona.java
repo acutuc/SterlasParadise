@@ -94,7 +94,17 @@ public class Zona {
 
     @Override
     public String toString() {
-        return "Zona{" + "numZona=" + numZona + ", numMesasMax=" + numMesasMax + ", exterior=" + exterior + ", reservas=" + reservas + '}';
+        
+        String map = "";
+        
+        for (LocalDateTime key : reservas.keySet()) {
+            
+            map +=  key + " -- Nº Mesas: " + reservas.get(key) + ';';
+            
+        }
+        
+        return "Zona{" + "numZona=" + numZona + ", numMesasMax=" + numMesasMax 
+                + ", exterior=" + exterior + ", reservas=" + map + '}';
     }
 
     
