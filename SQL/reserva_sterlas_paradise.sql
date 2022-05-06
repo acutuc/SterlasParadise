@@ -20,11 +20,11 @@ constraint pk_reservas primary key (codreserva)/*,
 
 constraint fk_zonas_reservas foreign key (codzona)
         references zonas (codzona) 
-        on update cascade,
+        on delete no action on update cascade,
         
 constraint fk_restaurantes_reservas foreign key (codrest)
         references restaurantes (codrest) 
-        on update cascade*/
+        on delete no action on update cascade*/
         );
         
 insert into reservas

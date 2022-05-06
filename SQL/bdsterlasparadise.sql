@@ -66,30 +66,30 @@ create table if not exists mesas_disponibles
 );
 
 
-drop table if exists `reservas`;
+drop table if exists reservas;
 
-create table `reservas` (
+create table reservas (
 
-`codreserva` int NOT NULL,
-`fecres` date,
-`horares` time,
-`numper` tinyint (2),
-`nomcli` varchar (30),
-`apecli` varchar (30),
-`tlfcli` int(8),
-`emailcli` varchar(100),
-`codzona` int,
-`codrest` int,
+codreserva int NOT NULL,
+fecres date,
+horares time,
+numper tinyint (2),
+nomcli varchar (30),
+apecli varchar (30),
+tlfcli int(8),
+emailcli varchar(100),
+codzona int,
+codrest int,
 
-constraint `pk_reservas` primary key (`codreserva`),
+constraint pk_reservas primary key (codreserva),
 
-constraint `fk_zonas_reservas` foreign key (`codzona`)
-        references `zonas` (`codzona`) 
-        on update cascade,
+constraint fk_zonas_reservas foreign key (codzona)
+        references zonas (codzona) 
+        on delete no action on update cascade,
         
-constraint `fk_restaurantes_reservas` foreign key (`codrest`)
-        references `restaurantes` (`codrest`) 
-        on update cascade
+constraint fk_restaurantes_reservas foreign key (codrest)
+        references restaurantes (codrest) 
+        on delete no action on update cascade
         );
         
 
