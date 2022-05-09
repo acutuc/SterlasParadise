@@ -171,5 +171,3 @@ end $$
 
 -- Actualizar las mesas disponibles (2 pts.)
 -- Evento que todos los días añada un dia a la tabla mesas_disponibles
-
-
