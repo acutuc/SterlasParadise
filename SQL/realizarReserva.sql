@@ -12,6 +12,12 @@ begin
         values
         (codReserva,fechaReserva,horaReserva,numeroPersonas,nombreCliente,apellicdoCliente,telefono,emailCliente,
         codZona,codRestaurante);
+        update mesas_disponibles
+        set numMesas=numMesas-mesasNecesarias(numeroPersonas)
+        where codRestaurante=codrest and
+								codzona=zona and
+								fecha=fechas and
+								hora=horas;
         return true;
     end;
     else 
