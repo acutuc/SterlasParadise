@@ -65,8 +65,9 @@ create table if not exists mesas_disponibles
     on delete no action on update cascade
 );
 
-/*INSERT INTO mesas_disponibles*/
-
+INSERT INTO mesas_disponibles
+values
+(1,1, '2000-01-01', '00:00:00', 10);
 
 
 drop table if exists reservas;
@@ -132,6 +133,36 @@ delimiter ;
 
 
 -- Reserva posible
+
+delimiter $$
+drop function if exists reservaPosible $$
+create function reservaPosible
+(codRestaurante int, zona int, numeroPersonas int, fechas date, horas time)
+returns boolean
+deterministic
+begin
+	declare mesasDisponibles int;
+    declare mesasNecesarias int;
+    
+    set mesasDisponibles = ifnull((select numMesas
+							from mesas_disponibles
+							where codRestaurante=codrest and
+								codzona=zona and
+								fecha=fechas and
+								hora=horas), 0);
+                            
+	set mesasNecesarias= mesasNecesarias(numeroPersonas);
+    
+    if mesasDisponibles >= mesasNecesarias then
+
+    return true;
+    
+    else
+    return false;
+    end if;
+    
+end $$
+
 
 -- Realizar reserva
 
