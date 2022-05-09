@@ -16,12 +16,12 @@ Evento que todos los días elimine el día anterior en la tabla mesas_disponible
 
 
 
--Función Realizar Reserva (1.5 pts.
+-Función Realizar Reserva (1.5 pts.)
 
 Crear la funcion para realizar la reserva, que contiene todos los datos de la reversa
 
 
 
--Insertar Datos a la BBDD 3pts.
+-Insertar Datos a la BBDD (3pts.)
 
 Esta parte se tiene que hacer despues de crear la conexion a la BBDD y que este creada TODA la base de datos.

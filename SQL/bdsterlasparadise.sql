@@ -77,7 +77,7 @@ create table reservas (
 codreserva int NOT NULL,
 fecres date,
 horares time,
-numper tinyint (2),
+numper tinyint,
 nomcli varchar (30),
 apecli varchar (30),
 tlfcli char(9),
