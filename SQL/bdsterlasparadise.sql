@@ -7,6 +7,8 @@ zonas(+[codrest*,codzona], interior, planta, mesas)
 resrevas(+codreserva, [codrest, codzona]*, fecha, hora, numper, nomcli, apecli, telefono, email)
 */
 
+-- drop database bdsterlasparadise;
+
 create database if not exists bdsterlasparadise;
 use bdsterlasparadise;
 
@@ -35,9 +37,10 @@ create table if not exists zonas(codrest int,codzona int,
  references restaurantes (codrest) on delete no action on update cascade);
 
 INSERT INTO zonas
--- interio impar exterior par, se empieza por 1, planta baja 0, si no se espeficia 0
+-- interio impar, exterior par, se empieza por 1, planta baja 0, si no se espeficia 0
 VALUES
-		(1, 1, 1, 0, 10),
+		(1, 1, 1, 0, 10), -- Interior Hawai
+        (1, 2, 1, 0, 10), -- Exterior Hawai
         (2, 1, 1, 0, 10),
         (2, 2 , 0, 0, 5),
         (3, 1, 1, 0, 5),
@@ -117,11 +120,14 @@ DETERMINISTIC
 READS SQL DATA
 
 BEGIN
-
-RETURN (numeroPersonas-4)/2 + 1;
-
+	IF numeroPersonas < 4 or numeroPersonas = 4 THEN
+		RETURN 1;
+        
+    ELSE
+		RETURN (numeroPersonas-4)/2 + 1;
+        
+	END IF;
 END$$
-
 delimiter ;
 
 
