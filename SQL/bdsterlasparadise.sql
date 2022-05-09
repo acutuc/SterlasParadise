@@ -45,9 +45,6 @@ VALUES
         (4, 1, 1, 0, 20);
 
 
-
-
-
 create table if not exists mesas_disponibles
 (
 	codrest int,
@@ -64,6 +61,9 @@ create table if not exists mesas_disponibles
 	references zonas (codzona)
     on delete no action on update cascade
 );
+
+/*INSERT INTO mesas_disponibles*/
+
 
 
 drop table if exists reservas;
@@ -100,5 +100,39 @@ values
 (3, "2001-3-22", "15:00", 4, 'Asuka', 'Lansley', 987654321, 'felizjuevess@getintheevashinji.com', 2, 1),
 (4, "2009-09-28", "16:30", 2, 'Senator', 'Armstrong', 987654321, 'nanomachines_son@worldmarshall.net', 2, 2),
 (5, "2018-12-06", "14:30", 14, 'Will', 'Smith', 987654321, 'itsrewindtime@thatshot.youtube', 2, 3);
+
+
+-- RUTINAS
+
+-- Dado un número de personas, devuelve las mesas que serán necesarias
+DROP FUNCTION IF EXISTS mesasNecesarias;
+delimiter $$
+CREATE FUNCTION mesasNecesarias(
+	numeroPersonas int)
+    
+    RETURNS int
+    
+LANGUAGE SQL
+DETERMINISTIC
+READS SQL DATA
+
+BEGIN
+
+RETURN (numeroPersonas-4)/2 + 1;
+
+END$$
+
+delimiter ;
+
+
+-- Reserva posible
+
+-- Realizar reserva
+
+-- Datos mesas_disponibles (2 pts.)
+ -- Rutina que rellena los 10 primeros días de la tabla mesas_disponibles
+
+-- Actualizar las mesas disponibles (2 pts.)
+-- Evento que todos los días añada un dia a la tabla mesas_disponibles
 
 
