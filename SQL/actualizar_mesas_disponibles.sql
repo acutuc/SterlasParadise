@@ -5,7 +5,7 @@ delimiter $$
 CREATE PROCEDURE procSumaDia()
 BEGIN
 	UPDATE mesas_disponibles
-    SET fecha = date_add(curdate(), interval 1 day);
+    SET fecha = date_add(datediff(curdate(), '24:00:00'), interval 1 day);
 END $$
 delimiter ;
 	
