@@ -4,8 +4,10 @@
 delimiter $$
 CREATE PROCEDURE procSumaDia()
 BEGIN
-	UPDATE mesas_disponibles
-    SET fecha = date_add(curdate(), interval 1 day);
+	DECLARE ultimaFecha DATE;
+    SELECT IFNULL(MAX(fecha)+1, CURDATE()) INTO ultimaFecha
+    FROM mesas_disponibles;
+    call cargarDatosMesasDisponibles (1, ultimaFecha);
 END $$
 delimiter ;
 	
