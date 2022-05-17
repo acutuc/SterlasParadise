@@ -1,5 +1,9 @@
+SHOW VARIABLES LIKE 'max_allowed_packet';
+SET GLOBAL max_allowed_packet=1073741824; 
+
 use bdsterlasparadise;
 DROP PROCEDURE IF EXISTS cargarDatosMesasDisponibles;
+
 delimiter $$
 CREATE PROCEDURE cargarDatosMesasDisponibles()
 
@@ -8,7 +12,7 @@ BEGIN
 	DECLARE contadorTurnos int default 0;
 	DELETE FROM mesas_disponibles; -- Borra los datos existentes
 
-    WHILE contadorDias < 5 DO -- 60 días
+    WHILE contadorDias <= 14 DO -- El máximo de días es 14 días
 		BEGIN
 				-- Hawai
                 SET contadorTurnos = 0;
@@ -155,7 +159,10 @@ BEGIN
                 
         END;
     END WHILE;
+    
 END$$
 delimiter ;
 
--- call cargarDatosMesasDisponibles();
+call cargarDatosMesasDisponibles();
+ 
+ select * from mesas_disponibles;
