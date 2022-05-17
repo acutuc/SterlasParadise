@@ -134,6 +134,7 @@ end $$
 
 -- Realizar reserva
 -- Si la reserva es posible, realiza la reserva
+
 delimiter $$
 drop function if exists realizarReserva $$
 create function realizarReserva
@@ -142,26 +143,25 @@ apellicdoCliente varchar(30),telefono char(9),emailCliente varchar(100),zona int
 returns boolean
 deterministic
 begin
-	if reservaPosible(restaurante, zona, numeroPersonas, fechaReserva, horaReserva) then
+declare codReservaAux int;
+if reservaPosible(restaurante, zona, numeroPersonas, fechaReserva, horaReserva) then
     begin
-		declare codReserva int;
-		select ifnull(max(codreserva)+1,1) into codReserva
+select ifnull(max(codreserva)+1,1) into codReservaAux
         from reservas;
-    
-		insert into reservas (codreserva,fecres,horares,numper,nomcli,apecli,tlfcli,emailcli,codzona,codrest)
+insert into reservas (codreserva,fecres,horares,numper,nomcli,apecli,tlfcli,emailcli,codzona,codrest)
         values
-        (codReserva,fechaReserva,horaReserva,numeroPersonas,nombreCliente,apellicdoCliente,telefono,emailCliente,
+        (codReservaAux,fechaReserva,horaReserva,numeroPersonas,nombreCliente,apellicdoCliente,telefono,emailCliente,
         zona,restaurante);
-        
+       
         update mesas_disponibles
         set numMesas=numMesas-mesasNecesarias(numeroPersonas)
         where codrest = restaurante and
-				codzona = zona and
-				fecha = fechaReserva and
-				hora = horaReserva;
+codzona = zona and
+fecha = fechaReserva and
+hora = horaReserva;
         return true;
     end;
-    else 
+    else
     return false;
     end if;
 end $$
