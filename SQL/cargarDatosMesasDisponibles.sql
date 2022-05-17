@@ -8,7 +8,7 @@ BEGIN
 	DECLARE contadorTurnos int default 0;
 	DELETE FROM mesas_disponibles; -- Borra los datos existentes
 
-    WHILE contadorDias < 15 DO -- 60 días
+    WHILE contadorDias < 5 DO -- 60 días
 		BEGIN
 				-- Hawai
                 SET contadorTurnos = 0;

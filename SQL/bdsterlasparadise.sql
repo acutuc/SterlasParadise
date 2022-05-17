@@ -137,7 +137,7 @@ delimiter ;
 delimiter $$
 drop function if exists reservaPosible $$
 create function reservaPosible
-(codRestaurante int, zona int, numeroPersonas int, fechas date, horas time)
+(restaurante int, zona int, numeroPersonas int, fechaReserva date, horaReserva time)
 returns boolean
 deterministic
 begin
@@ -146,10 +146,10 @@ begin
     
     set mesasDisponibles = ifnull((select numMesas
 							from mesas_disponibles
-							where codRestaurante=codrest and
-								codzona=zona and
-								fecha=fechas and
-								hora=horas), 0);
+							where codrest = restaurante and
+								codzona = zona and
+								fecha = fechaReserva and
+								hora = horaReserva), 0);
                             
 	set mesasNecesarias= mesasNecesarias(numeroPersonas);
     
@@ -165,26 +165,28 @@ end $$
 
 
 -- Realizar reserva
+
 delimiter $$
 drop function if exists realizarReserva $$
 create function realizarReserva
 (codReserva int,fechaReserva date,horaReserva time,numeroPersonas int,nombreCliente varchar(30),
-apellicdoCliente varchar(30),telefono char(9),emailCliente varchar(100),codZona int,codRestaurante int)
+apellicdoCliente varchar(30),telefono char(9),emailCliente varchar(100),zona int,restaurante int)
 returns boolean
 deterministic
 begin
-	if reservaPosible() then
+	if reservaPosible(restaurante, zona, numeroPersonas, fechaReserva, horaReserva) then
     begin
 		insert into reservas (codreserva,fecres,horares,numper,nomcli,apecli,tlfcli,emailcli,codzona,codrest)
         values
         (codReserva,fechaReserva,horaReserva,numeroPersonas,nombreCliente,apellicdoCliente,telefono,emailCliente,
-        codZona,codRestaurante);
+        zona,restaurante);
+        
         update mesas_disponibles
         set numMesas=numMesas-mesasNecesarias(numeroPersonas)
-        where codRestaurante=codrest and
-								codzona=zona and
-								fecha=fechas and
-								hora=horas;
+        where codrest = restaurante and
+				codzona = zona and
+				fecha = fechaReserva and
+				hora = horaReserva;
         return true;
     end;
     else 
@@ -193,7 +195,11 @@ begin
 end $$
 
 -- Datos mesas_disponibles (2 pts.)
- -- Rutina que rellena los 10 primeros días de la tabla mesas_disponibles
+ -- Rutina que rellena los 15 primeros días de la tabla mesas_disponibles
+
+
 
 -- Actualizar las mesas disponibles (2 pts.)
 -- Evento que todos los días añada un dia a la tabla mesas_disponibles
+
+
