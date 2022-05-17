@@ -12,6 +12,9 @@ resrevas(+codreserva, [codrest, codzona]*, fecha, hora, numper, nomcli, apecli, 
 create database if not exists bdsterlasparadise;
 use bdsterlasparadise;
 
+-- Cambia variable para poder cargar 14 dias
+SET GLOBAL max_allowed_packet=1073741824; 
+
 create table if not exists restaurantes
 (
 	codrest int not null,

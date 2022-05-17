@@ -29,7 +29,7 @@ VALUES
 
 -- DELETE FROM mesas_disponibles; -- Borra los datos existentes
 
-CALL cargarDatosMesasDisponibles(5, curdate());
+CALL cargarDatosMesasDisponibles(14, curdate());
     
     
 -- Ejemplos de reservas (pruebas)
