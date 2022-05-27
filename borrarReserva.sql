@@ -27,5 +27,7 @@ begin
 	update mesas_disponibles
     set numMesas=numMesas+ mesasNecesarias(numPer)
     where codrest=codRestaurante and codZona=codzona and horaReserva=horares and diaReserva=fecres;
+    delete from reservas
+    where codReserva=codreserva;
 end $$
 delimiter ;
